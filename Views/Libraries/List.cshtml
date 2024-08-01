@@ -1,0 +1,43 @@
+﻿@model IEnumerable<LibraryManagementSystem.Models.Library>
+@{
+    ViewData["Title"] = "List";
+}
+
+<h1>Libraries</h1>
+
+<table>
+    <thead>
+    <th> @* Table Header Row *@
+    <td>Id</td>
+    <td>Color</td>
+    <td>Size</td>
+    </th>
+    </thead>
+    <tbody>
+
+        @foreach (Library library in Model)
+        {
+
+            <tr>
+                <td>@library.LibraryId</td>
+                <td>
+                    @Html.ActionLink(@library.Sections.ToString(), "Details", new { id = library.LibraryId })
+                </td>
+
+                <td>
+                    @foreach (var section in library.Sections)
+                    {
+                        @Html.ActionLink(@section.name, "Details", section.name)
+                    }
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = library.LibraryId })
+                    @Html.ActionLink("Delete", "Delete", new { id = library.LibraryId })
+                </td>
+            </tr>
+
+        }
+
+    </tbody>
+</table>
+

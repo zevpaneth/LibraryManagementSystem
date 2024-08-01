@@ -1,0 +1,30 @@
+﻿@model LibraryManagementSystem.Models.Library
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Sections of this Library</h4>
+    <hr />
+    <dl class="row">
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.LibraryId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+<table>
+@foreach (var sect in Model.Sections)
+{
+
+    <tr>
+        <td>@sect.SectionId</td>
+        
+        <td><a asp-controller="shelves" asp-action="index"></a>Details</td>
+    </tr>
+
+}
+</table>

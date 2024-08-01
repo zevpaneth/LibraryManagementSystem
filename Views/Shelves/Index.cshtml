@@ -1,0 +1,50 @@
+﻿@model IEnumerable<LibraryManagementSystem.Models.Shelf>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Shelves</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+				@Html.DisplayNameFor(model => model.ShelfId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Height)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaxWidth)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ShelfId)
+                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Height)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaxWidth)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ShelfId">Edit</a> |
+                <a asp-controller="Books" asp-action="index" asp-route-id="@item.ShelfId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ShelfId">Delete</a>
+            </td>
+        </tr>
+}<tr>
+    <a asp-controller="books" asp-action="index">Books of this Shelfs</a>
+</tr>
+    </tbody>
+</table>
+
